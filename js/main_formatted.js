@@ -1648,18 +1648,23 @@ e.scrollLeft=n-r
 }
 );
 
+
 // Secure Link Deobfuscator
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll("[data-secure-link]").forEach(function(el) {
-    const decodeLink = function() {
-      if (el.getAttribute("href") === "javascript:void(0)") {
+    el.addEventListener("click", function(e) {
+      if (el.getAttribute("href") === "javascript:void(0)" || el.getAttribute("href") === "#") {
+        e.preventDefault();
         try {
-          el.setAttribute("href", atob(el.getAttribute("data-secure-link")));
-        } catch(e) {}
+          const decoded = atob(el.getAttribute("data-secure-link"));
+          el.setAttribute("href", decoded);
+          if (el.getAttribute("target") === "_blank") {
+            window.open(decoded, "_blank");
+          } else {
+            window.location.href = decoded;
+          }
+        } catch(err) {}
       }
-    };
-    el.addEventListener("mouseenter", decodeLink);
-    el.addEventListener("touchstart", decodeLink, {passive: true});
-    el.addEventListener("click", decodeLink);
+    });
   });
 });
