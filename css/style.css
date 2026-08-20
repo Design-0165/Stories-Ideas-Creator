@@ -1891,6 +1891,18 @@ body.cursor-hover .custom-cursor-dot {
   }
 }
 
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-lg);
+  }
+  
+  .footer-social, .footer-contact-item {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 480px) {
   .stats-grid {
     grid-template-columns: 1fr;
