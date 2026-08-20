@@ -1469,7 +1469,7 @@ Title:"New Contact Form Lead!",Tags:"envelope,sparkles"
 
 }
 ).catch(e=>console.log("Ntfy error",e));
-const s="66a859b1-1289-4d33-96d7-80fb1071eb4a";
+const s=atob("NjZhODU5YjEtMTI4OS00ZDMzLTk2ZDctODBmYjEwNzFlYjRh");
 "YOUR_WEB3FORMS_ACCESS_KEY"!==s&&fetch("https://api.web3forms.com/submit",{
 method:"POST",headers:{
 "Content-Type":"application/json",Accept:"application/json"
@@ -1539,7 +1539,7 @@ Title:"New Client Review Submitted!",Tags:"star,speech_balloon"
 
 }
 ).catch(e=>console.log("Ntfy error",e));
-const c="66a859b1-1289-4d33-96d7-80fb1071eb4a";
+const c=atob("NjZhODU5YjEtMTI4OS00ZDMzLTk2ZDctODBmYjEwNzFlYjRh");
 fetch("https://api.web3forms.com/submit",{
 method:"POST",headers:{
 "Content-Type":"application/json",Accept:"application/json"
@@ -1647,3 +1647,19 @@ e.scrollLeft=n-r
 )
 }
 );
+
+// Secure Link Deobfuscator
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("[data-secure-link]").forEach(function(el) {
+    const decodeLink = function() {
+      if (el.getAttribute("href") === "javascript:void(0)") {
+        try {
+          el.setAttribute("href", atob(el.getAttribute("data-secure-link")));
+        } catch(e) {}
+      }
+    };
+    el.addEventListener("mouseenter", decodeLink);
+    el.addEventListener("touchstart", decodeLink, {passive: true});
+    el.addEventListener("click", decodeLink);
+  });
+});
