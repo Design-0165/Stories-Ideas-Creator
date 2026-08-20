@@ -952,10 +952,7 @@ p {
   margin-bottom: var(--space-md);
 }
 
-.footer-social {
-  display: flex;
-  gap: var(--space-sm);
-}
+.footer-social{display:flex;flex-wrap:wrap;gap:var(--space-sm)}
 
 .footer-social a {
   width: 40px;
