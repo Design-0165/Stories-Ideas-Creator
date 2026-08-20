@@ -1007,7 +1007,7 @@ p {
 
 .footer-contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   margin-bottom: var(--space-md);
   color: var(--text-muted);
