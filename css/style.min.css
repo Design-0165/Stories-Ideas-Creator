@@ -952,7 +952,11 @@ p {
   margin-bottom: var(--space-md);
 }
 
-.footer-social{display:flex;flex-wrap:wrap;gap:var(--space-sm)}
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
 
 .footer-social a {
   width: 40px;
@@ -1004,7 +1008,7 @@ p {
 
 .footer-contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   margin-bottom: var(--space-md);
   color: var(--text-muted);
@@ -1043,7 +1047,20 @@ p {
 .footer-contact-item a:hover {
   color: var(--accent) !important;
 }
-.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding:var(--space-md) 0;display:flex;flex-direction:row;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;text-align:center;font-size:var(--fs-small);color:var(--text-muted)}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--space-md) 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
 
 /* ---------- Page Hero (Inner Pages) ---------- */
 .page-hero {
