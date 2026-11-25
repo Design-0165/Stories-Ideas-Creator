@@ -1447,7 +1447,7 @@ if(o&&o.value.trim()){
 }
 if(n){
 const t=document.getElementById("first-name").value.trim(),n=document.getElementById("last-name").value.trim(),a=o?o.value.trim():"",r=document.getElementById("subject").value.trim(),i=document.getElementById("message").value.trim();
-fetch("https://ntfy.sh/stories_ideas_creator_leads",{
+fetch("https://ntfy.sh/YOUR_PRIVATE_NTFY_TOPIC_HERE",{
 method:"POST",body:`Name: ${
 t
 }
@@ -1520,7 +1520,7 @@ const d={
 name:a,role:r,rating:i,text:s,date:(new Date).toLocaleDateString()
 }
 ;
-fetch("https://ntfy.sh/stories_ideas_creator_leads",{
+fetch("https://ntfy.sh/YOUR_PRIVATE_NTFY_TOPIC_HERE",{
 method:"POST",body:`Review from: ${
 a
 }
