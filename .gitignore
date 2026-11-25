@@ -5,6 +5,7 @@
 .env.local
 .env.production
 .env.staging
+js/config.js
 config.local.js
 secrets.js
 secrets.json

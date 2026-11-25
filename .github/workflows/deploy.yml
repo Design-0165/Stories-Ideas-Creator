@@ -1,0 +1,51 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate js/config.js from GitHub Secrets
+        env:
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          KEY="${WEB3FORMS_ACCESS_KEY:-YOUR_WEB3FORMS_KEY_HERE}"
+          TOPIC="${NTFY_TOPIC:-YOUR_PRIVATE_NTFY_TOPIC_HERE}"
+          cat << EOF > js/config.js
+          const SITE_CONFIG = {
+            WEB3FORMS_ACCESS_KEY: "${KEY}",
+            NTFY_TOPIC: "${TOPIC}",
+          };
+          EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
